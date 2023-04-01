@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ListarPro",
+    "name": "RestWell",
     "slug": "ListarPro",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,19 +20,25 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.passionui.ListarPro"
+      "bundleIdentifier": "com.rgagency.restwell"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rgagency.restwell"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9248227d-b74b-4805-8972-3eba5a0faa11"
+      }
     }
   }
 }

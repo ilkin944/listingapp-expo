@@ -31,7 +31,7 @@ const Index = props => {
 Index.propTypes = {
   color: PropTypes.string,
   thickness: PropTypes.number,
-  direction: PropTypes.oneOf('horizontal', 'vertical'),
+  direction: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
 Index.defaultProps = {

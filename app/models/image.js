@@ -8,9 +8,6 @@ export default class ImageModel {
 
   static fromJson(json) {
     try {
-      if (typeof json !== 'object') {
-        throw 'json ImageModel is not object';
-      }
       return new ImageModel({
         id: json.id ?? 0,
         full: json.full?.url ?? '',
@@ -24,9 +21,6 @@ export default class ImageModel {
 
   static fromJsonUpload(json) {
     try {
-      if (typeof json !== 'object') {
-        throw 'json ImageModel is not object';
-      }
       return new ImageModel({
         id: json.id ?? 0,
         thumb: json.media_details?.sizes?.thumbnail?.source_url ?? '',

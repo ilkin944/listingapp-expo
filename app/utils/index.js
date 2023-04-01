@@ -1,5 +1,5 @@
-import {Images} from '@configs';
-import {I18nManager, LayoutAnimation, Platform, UIManager} from 'react-native';
+import { Images } from '@configs';
+import { I18nManager, LayoutAnimation, Platform, UIManager } from 'react-native';
 import * as Location from 'expo-location';
 import * as Updates from 'expo-updates';
 import * as FileSystem from 'expo-file-system';
@@ -47,7 +47,7 @@ export const enableExperimental = () => {
 export const getCurrentLocation = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const {status} = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
         const location = await Location.getCurrentPositionAsync();
         resolve(location);
@@ -63,17 +63,17 @@ export const getCurrentLocation = () => {
 export const convertIcon = name => {
   if (name.includes('far fa-')) {
     name = name?.replace('far fa-', '');
-    return {name};
+    return { name };
   }
   if (name.includes('fas fa-')) {
     name = name?.replace('fas fa-', '');
-    return {name, solid: true};
+    return { name, solid: true };
   }
   if (name.includes('fab fa-')) {
     name = name?.replace('fab fa-', '');
-    return {name, brand: true};
+    return { name, brand: true };
   }
-  return {name};
+  return { name };
 };
 
 export function stopTrackTime(key) {
@@ -86,7 +86,7 @@ export function stopTrackTime(key) {
 
 export function validate(
   value,
-  {empty = false, match, email = false, number = false},
+  { empty = false, match, email = false, number = false },
 ) {
   if (!value && !empty) {
     return 'value_not_empty';
@@ -120,12 +120,6 @@ export function delay(ms) {
 
 export function getNational(code) {
   switch (code) {
-    case 'vi':
-      return {
-        value: 'vi',
-        title: 'Việt Nam',
-        icon: Images.vi,
-      };
     case 'ar':
       return {
         value: 'ar',
@@ -133,95 +127,25 @@ export function getNational(code) {
         icon: Images.ar,
       };
 
-    case 'da':
+    case 'ru':
       return {
-        value: 'da',
-        title: 'Danish',
-        icon: Images.da,
+        value: 'ru',
+        title: 'Russian',
+        icon: Images.ru,
       };
 
-    case 'de':
+    case 'tr':
       return {
-        value: 'de',
-        title: 'German',
-        icon: Images.de,
+        value: 'tr',
+        title: 'Türkçe',
+        icon: Images.tr,
       };
 
-    case 'el':
+    case 'az':
       return {
-        value: 'el',
-        title: 'Greek',
-        icon: Images.el,
-      };
-
-    case 'fr':
-      return {
-        value: 'fr',
-        title: 'French',
-        icon: Images.fr,
-      };
-
-    case 'he':
-      return {
-        value: 'he',
-        title: 'Hebrew',
-        icon: Images.he,
-      };
-
-    case 'id':
-      return {
-        value: 'id',
-        title: 'Indonesian',
-        icon: Images.id,
-      };
-
-    case 'ja':
-      return {
-        value: 'ja',
-        title: 'Japanese',
-        icon: Images.ja,
-      };
-
-    case 'ko':
-      return {
-        value: 'ko',
-        title: 'Korean',
-        icon: Images.ko,
-      };
-
-    case 'lo':
-      return {
-        value: 'lo',
-        title: 'Lao',
-        icon: Images.lo,
-      };
-
-    case 'nl':
-      return {
-        value: 'nl',
-        title: 'Dutch',
-        icon: Images.nl,
-      };
-
-    case 'zh':
-      return {
-        value: 'zh',
-        title: 'Chinese',
-        icon: Images.zh,
-      };
-
-    case 'fa':
-      return {
-        value: 'fa',
-        title: 'Persian',
-        icon: Images.fa,
-      };
-
-    case 'km':
-      return {
-        value: 'km',
-        title: 'Cambodian',
-        icon: Images.km,
+        value: 'az',
+        title: 'Azərbaycanca',
+        icon: Images.az,
       };
 
     default:

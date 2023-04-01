@@ -24,6 +24,9 @@ import Categories from './components/category';
 import Locations from './components/location';
 import Recent from './components/recent';
 import styles from './styles';
+import Mekanlar from './components/mekanlar';
+import CanliMusiqiOlanlar from './components/canliMusiqiOlanlar';
+import Story from '../Story';
 
 export default function Home({navigation}) {
   const insets = useSafeAreaInsets();
@@ -158,9 +161,12 @@ export default function Home({navigation}) {
             onPress={onCategory}
             onCategoryList={onCategoryList}
           />
+          <Story />
           <SizedBox height={12} />
           <Locations data={home?.location} onPress={onCategory} />
           <Recent data={home?.recent} onPress={onPressProduct} />
+          <Mekanlar data={home?.recent} onPress={onPressProduct} />
+          <CanliMusiqiOlanlar data={home?.recent} onPress={onPressProduct} />
         </SafeAreaView>
       </Animated.ScrollView>
     </View>

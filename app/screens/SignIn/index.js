@@ -23,8 +23,8 @@ export default function SignIn({navigation, route}) {
   const passwordRef = useRef();
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState('paul');
-  const [password, setPassword] = useState('123456@listar');
+  const [username, setUsername] = useState('demo');
+  const [password, setPassword] = useState('demohesab');
   const [showPassword, setShowPassword] = useState(false);
   const [errorUsername, setErrorUsername] = useState();
   const [errorPassword, setErrorPassword] = useState();

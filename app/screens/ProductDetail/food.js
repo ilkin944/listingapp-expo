@@ -102,7 +102,7 @@ export default function Index({navigation, route}) {
    * on copy to clipboard
    * @param link
    */
-  const onCopy = async (link) => {
+  const onCopy = async link => {
     await Clipboard.setStringAsync(link);
     Toast.show(t('link_already_copy_clipboard'));
   };
