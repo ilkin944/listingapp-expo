@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: 16,
   },
-  item: {marginBottom: 16},
+  item: {
+    marginBottom: 16,
+    display: 'flex',
+    flexDirection: 'column',
+  },
   contentList: {paddingHorizontal: 16, paddingVertical: 8},
 });

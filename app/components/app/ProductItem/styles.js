@@ -2,10 +2,16 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {flex: 1},
-  smallImage: {width: 84, height: 84, borderRadius: 12},
+  smallImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 12,
+    borderBottomEndRadius: 0,
+    borderBottomStartRadius: 0,
+    marginBottom: 10,
+  },
   smallContent: {
     flexDirection: 'column',
-    justifyContent: 'center',
   },
   rateContent: {
     alignItems: 'flex-start',
@@ -140,5 +146,8 @@ export default StyleSheet.create({
   rowPrice: {
     flexDirection: 'row',
     alignItems: 'flex-start',
+  },
+  titleTop: {
+    fontSize: 25,
   },
 });

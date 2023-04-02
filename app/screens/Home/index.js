@@ -165,6 +165,7 @@ export default function Home({navigation}) {
           <SizedBox height={12} />
           <Locations data={home?.location} onPress={onCategory} />
           <Recent data={home?.recent} onPress={onPressProduct} />
+          <Locations data={home?.location} onPress={onCategory} />
           <Mekanlar data={home?.recent} onPress={onPressProduct} />
           <CanliMusiqiOlanlar data={home?.recent} onPress={onPressProduct} />
         </SafeAreaView>

@@ -18,6 +18,7 @@ Index.defaultProps = {
   width: 0,
   height: 0,
   children: null,
+  
 };
 
 export default Index;

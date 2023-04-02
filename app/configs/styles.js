@@ -10,8 +10,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    alignItems: 'flex-start',
   },
   rowSpace: {
     flexDirection: 'row',
