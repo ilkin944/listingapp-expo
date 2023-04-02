@@ -34,10 +34,10 @@ const Index = props => {
           />
           <SizedBox width={8} />
           <View style={Styles.flex}>
-            <Text typography="title" weight="bold">
+            <Text typography="title" style={{fontSize: 32}} weight="bold">
               {item.title}
             </Text>
-            <Text typography="subtitle" type="secondary">
+            <Text typography="subtitle" style={{fontSize: 24}} type="secondary">
               {item.category?.title}
             </Text>
             <SizedBox height={4} />

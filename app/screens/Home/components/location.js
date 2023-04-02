@@ -57,5 +57,5 @@ const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: 16,
   },
-  item: {width: 130, height: 160, paddingHorizontal: 8},
+  item: {width: 250, height: 160, paddingHorizontal: 8,},
 });
