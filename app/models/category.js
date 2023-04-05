@@ -35,7 +35,7 @@ export default class CategoryModel {
         hasChild: json.has_child ?? false,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

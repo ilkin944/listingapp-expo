@@ -39,7 +39,7 @@ export default class NotificationModel {
         authentication,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

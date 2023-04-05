@@ -16,7 +16,7 @@ export default class SortModel {
         field: json.field ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

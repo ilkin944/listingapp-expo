@@ -42,7 +42,7 @@ export default class BookingPaymentModel {
         }),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

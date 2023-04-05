@@ -15,7 +15,7 @@ export default class ImageModel {
         thumb: json.thumb?.url ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 
@@ -28,7 +28,7 @@ export default class ImageModel {
         full: json.media_details?.sizes?.full?.source_url ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

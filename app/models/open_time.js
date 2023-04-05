@@ -20,7 +20,7 @@ export default class OpenTimeModel {
         }),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

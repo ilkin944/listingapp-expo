@@ -29,7 +29,7 @@ export default class DeviceModel {
         systemVersion: Platform.Version,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

@@ -27,10 +27,12 @@ export default function Index(props) {
             backgroundColor: theme.colors.card,
           },
         ]}>
-        <Pressable style={[Styles.flex, Styles.row]} onPress={onSearch}>
+        <Pressable
+          style={{display: 'flex', flexDirection: 'row', alignItems: "center", width: "85%"}}
+          onPress={onSearch}>
           <SizedBox width={4} />
           <Icon name="magnify" size={24} />
-          <Text style={Styles.paddingHorizontal4}>{t('search_location')}</Text>
+          <Text style={Styles.paddingHorizontal4}>{t('search_location')}...</Text>
         </Pressable>
         <View style={Styles.padding8}>
           <Divider direction="vertical" />

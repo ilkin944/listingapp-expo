@@ -64,7 +64,7 @@ export default class BookingDailyStyleModel extends BookingStyleModel {
         endDate: moment(json.end_date),
       });
     } catch (e) {
-      console.log(e.toString());
+      // //console.log(e.toString());
     }
   }
 }

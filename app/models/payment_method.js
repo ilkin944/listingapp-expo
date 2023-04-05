@@ -18,7 +18,7 @@ export default class PaymentMethodModel {
         instruction: json.instruction ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

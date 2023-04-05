@@ -42,7 +42,7 @@ export default class UserModel {
         email: json.user_email ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 

@@ -925,10 +925,7 @@ export default function Index({navigation, route}) {
                   item={item}
                   type="grid"
                   onPress={() => onPressProduct(item)}
-                  style={[
-                    Styles.paddingHorizontal8,
-                    {width: (widthDevice - 16) / 2},
-                  ]}
+                  style={{width: '100%'}}
                 />
               );
             }}

@@ -1,21 +1,21 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View, ScrollView} from 'react-native';
 import {CategoryItem, SizedBox, Text} from '@components';
 import PropTypes from 'prop-types';
 import {Styles} from '@configs';
 import {useTranslation} from 'react-i18next';
+import {Divider} from '@components';
+import {Image} from 'react-native';
 
 export default function Locations(props) {
   const {t} = useTranslation();
   const {data, onPress} = props;
-
   /**
    * render item location
    * @param item
-   * @returns {JSX.Element}
    */
   const renderItem = ({item}) => (
-    <View style={styles.item}>
+    <View style={{display: 'flex', flexDirection: 'row'}}>
       <CategoryItem item={item} type="card" onPress={() => onPress(item)} />
     </View>
   );
@@ -23,39 +23,68 @@ export default function Locations(props) {
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text typography="h4" weight="bold">
+        <Text style={{fontSize: 22}} typography="h4" weight="bold">
           {t('popular_location')}
         </Text>
         <SizedBox height={2} />
-        <Text typography="subtitle" type="secondary">
+        <Text style={{fontSize: 14}} typography="subtitle" type="secondary">
           {t('let_find_most_interesting')}
         </Text>
       </View>
-      <FlatList
-        data={data}
-        contentContainerStyle={Styles.padding8}
-        showsHorizontalScrollIndicator={false}
+
+      <ScrollView
+        contentContainerStyle={{
+          display: 'flex',
+          flexDirection: 'row',
+        }}
         horizontal={true}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => `${item?.id}${index}`}
-      />
+        showsHorizontalScrollIndicator={false}>
+        {data.length > 0 &&
+          data.map(item => (
+            <View
+              onPress={() => onPress(item)}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: 15,
+                marginBottom: 15,
+                flex: 1,
+              }}
+              key={item._id}>
+              <View style={{marginRight: 15}}>
+                <Text>{item.listingTemle}</Text>
+                <Image
+                  source={{uri: `${item.image}`}}
+                  style={{width: 250, height: 250, aspectRatio: 1}}
+                />
+                {/* Remove the fixed width and height props from Image and use style instead */}
+              </View>
+            </View>
+          ))}
+        <Divider
+          style={{
+            marginBottom: 10,
+            width: '85%',
+            marginTop: 15,
+          }}
+        />
+      </ScrollView>
     </>
   );
 }
 
 Locations.propTypes = {
-  data: PropTypes.array,
   onPress: PropTypes.func,
 };
 
 Locations.defaultProps = {
-  data: Array(10),
   onPress: () => {},
 };
 
 const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: 16,
+    marginTop: 15,
   },
-  item: {width: 250, height: 160, paddingHorizontal: 8,},
+  item: {width: 250, height: 160, paddingHorizontal: 8},
 });

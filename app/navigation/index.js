@@ -173,6 +173,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Review"
+          style={{color: 'red'}}
           component={Review}
           options={{title: t('review')}}
         />

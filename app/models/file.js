@@ -19,7 +19,7 @@ export default class FileModel {
         size: json.size,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

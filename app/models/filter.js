@@ -40,7 +40,7 @@ export default class FilterModel {
         endHour: setting.endHour,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 

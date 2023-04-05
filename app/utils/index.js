@@ -1,5 +1,5 @@
-import { Images } from '@configs';
-import { I18nManager, LayoutAnimation, Platform, UIManager } from 'react-native';
+import {Images} from '@configs';
+import {I18nManager, LayoutAnimation, Platform, UIManager} from 'react-native';
 import * as Location from 'expo-location';
 import * as Updates from 'expo-updates';
 import * as FileSystem from 'expo-file-system';
@@ -47,7 +47,7 @@ export const enableExperimental = () => {
 export const getCurrentLocation = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+      const {status} = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
         const location = await Location.getCurrentPositionAsync();
         resolve(location);
@@ -63,17 +63,17 @@ export const getCurrentLocation = () => {
 export const convertIcon = name => {
   if (name.includes('far fa-')) {
     name = name?.replace('far fa-', '');
-    return { name };
+    return {name};
   }
   if (name.includes('fas fa-')) {
     name = name?.replace('fas fa-', '');
-    return { name, solid: true };
+    return {name, solid: true};
   }
   if (name.includes('fab fa-')) {
     name = name?.replace('fab fa-', '');
-    return { name, brand: true };
+    return {name, brand: true};
   }
-  return { name };
+  return {name};
 };
 
 export function stopTrackTime(key) {
@@ -86,7 +86,7 @@ export function stopTrackTime(key) {
 
 export function validate(
   value,
-  { empty = false, match, email = false, number = false },
+  {empty = false, match, email = false, number = false},
 ) {
   if (!value && !empty) {
     return 'value_not_empty';

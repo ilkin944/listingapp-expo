@@ -36,7 +36,7 @@ export default class BookingSlotStyleModel extends BookingStyleModel {
         price: json.price ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

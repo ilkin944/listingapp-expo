@@ -191,7 +191,7 @@ function BookingRequest(props) {
         <TouchableOpacity
           style={[Styles.paddingVertical8, Styles.row]}
           onPress={() => onDetail(item)}>
-          <View style={Styles.flex}>
+          <View>
             <Text typography="title" weight="bold">
               {item.title}
             </Text>
@@ -271,18 +271,22 @@ function BookingRequest(props) {
           size="small"
         />
         <SizedBox height={12} />
-        <View style={Styles.row}>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={statusRef.current?.present}
             style={[
               styles.filterItem,
               {
                 borderColor: theme.colors.border,
+                width: 100,
+                height: 40,
               },
             ]}>
-            <Icon name={'filter-outline'} size={14} />
+            <Icon name={'filter-outline'} size={16} />
             <SizedBox width={4} />
-            <Text typography="subtitle">{t('status')}</Text>
+            <Text style={{fontSize: 15}} typography="subtitle">
+              {t('status')}
+            </Text>
           </TouchableOpacity>
           <SizedBox width={12} />
           <TouchableOpacity
@@ -291,11 +295,15 @@ function BookingRequest(props) {
               styles.filterItem,
               {
                 borderColor: theme.colors.border,
+                width: 75,
+                height: 40,
               },
             ]}>
-            <Icon name={'sort-variant'} size={14} />
+            <Icon name={'sort-variant'} size={16} />
             <SizedBox width={4} />
-            <Text typography="subtitle">{t('sort')}</Text>
+            <Text style={{fontSize: 15}} typography="subtitle">
+              {t('sort')}
+            </Text>
           </TouchableOpacity>
         </View>
         <SizedBox height={8} />

@@ -547,14 +547,12 @@ export default function Index({navigation, route}) {
         headerRight: () => {
           return (
             <View style={Styles.nativeRightButton}>
-              <Button
-                type="text"
-                size="small"
-                full={false}
+              <Icon
                 onPress={onSubmit}
-                textStyle={{color: theme.colors.primary}}>
-                {route.params?.item ? t('update') : t('add')}
-              </Button>
+                name="check"
+                color={theme.colors.primary}
+                size={28}
+              />
             </View>
           );
         },
@@ -585,13 +583,30 @@ export default function Index({navigation, route}) {
           }}
         </UploadImage>
         <SizedBox height={16} />
-        {renderGallery()}
         <SizedBox height={20} />
         <TextInput
           ref={titleRef}
           defaultValue={title}
           label={t('title')}
           placeholder={t('input_title')}
+          onChangeText={value => {
+            const valid = validate(value, {empty: false});
+            setTitle(value);
+            setError({...error, title: valid});
+          }}
+          onFocus={() => {
+            setError({...error, title: null});
+          }}
+          onSubmitEditing={() => contentRef.current?.focus()}
+          error={t(error?.title)}
+          size="small"
+        />
+        <SizedBox height={16} />
+        <TextInput
+          ref={titleRef}
+          defaultValue={title}
+          label={t('slogan_title')}
+          placeholder={t('slogan')}
           onChangeText={value => {
             const valid = validate(value, {empty: false});
             setTitle(value);
@@ -623,36 +638,44 @@ export default function Index({navigation, route}) {
           size="small"
         />
         <SizedBox height={16} />
-        <InputPicker
-          label={t('category')}
-          value={categories?.map?.(item => item.title).join(', ')}
-          placeholder={t('select_category')}
-          onPress={onSelectCategory}
-        />
-        <SizedBox height={16} />
-        <InputPicker
-          label={t('facilities')}
-          value={facilities?.map?.(item => item.title).join(', ')}
-          placeholder={t('select_facilities')}
-          onPress={onSelectFacilities}
-        />
-        <SizedBox height={16} />
-        <InputPicker
-          label={t('tags')}
-          value={tags?.join(', ')}
-          placeholder={t('select_tags')}
-          onPress={onSelectTags}
-        />
-        <SizedBox height={20} />
         <Divider />
         <SizedBox height={20} />
-        <InputPicker
-          label={t('country')}
-          value={country?.title}
-          placeholder={t('select_country')}
-          onPress={() => countryRef.current?.present()}
+        <TextInput
+          ref={phoneRef}
+          defaultValue={phone}
+          label={t('phone')}
+          placeholder={t('input_phone')}
+          onChangeText={value => {
+            const valid = validate(value, {empty: false, number: true});
+            setPhone(value);
+            setError({...error, phone: valid});
+          }}
+          onFocus={() => {
+            setError({...error, phone: null});
+          }}
+          onSubmitEditing={() => faxRef.current?.focus()}
+          error={t(error?.phone)}
+          size="small"
         />
-        <SizedBox height={16} />
+         <SizedBox height={20} />
+        <TextInput
+          ref={phoneRef}
+          defaultValue={phone}
+          label={t('Whatsapp_title')}
+          placeholder={t('Whatsapp_add')}
+          onChangeText={value => {
+            const valid = validate(value, {empty: false, number: true});
+            setPhone(value);
+            setError({...error, phone: valid});
+          }}
+          onFocus={() => {
+            setError({...error, phone: null});
+          }}
+          onSubmitEditing={() => faxRef.current?.focus()}
+          error={t(error?.phone)}
+          size="small"
+        />
+        <SizedBox height={20} />
         <View style={Styles.row}>
           <InputPicker
             label={t('state')}

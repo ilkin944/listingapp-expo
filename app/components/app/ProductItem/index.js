@@ -79,7 +79,7 @@ const Index = props => {
           <SizedBox height={16} width={120}>
             <ContentLoader />
           </SizedBox>
-          <SizedBox height={8} />
+          <SizedBox height={8}  width={150}/>
           <SizedBox height={10} width={150}>
             <ContentLoader />
           </SizedBox>

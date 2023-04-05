@@ -47,7 +47,7 @@ export default function Index({navigation, route}) {
           return UserModel.fromJson(response.data);
         }
       } catch (e) {
-        console.log('ERROR', e);
+        // console.log('ERROR', e);
       }
     };
     getAuthor().then(data => {
@@ -90,7 +90,7 @@ export default function Index({navigation, route}) {
    * on copy to clipboard
    * @param link
    */
-  const onCopy = async (link) => {
+  const onCopy = async link => {
     await Clipboard.setStringAsync(link);
     Toast.show(t('link_already_copy_clipboard'));
   };
@@ -103,20 +103,35 @@ export default function Index({navigation, route}) {
     return (
       <BottomSheetView ref={bottomQRCode}>
         <View style={styles.bottomSheetContainer}>
-          <View style={Styles.row}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingTop: 15,
+            }}>
             <Image
               source={{uri: author?.image}}
               style={styles.userImageShare}
             />
             <SizedBox width={8} />
             <View style={Styles.flex}>
-              <Text typography="title" weight="bold">
+              <Text
+                style={{fontSize: 25, marginLeft: 5}}
+                typography="title"
+                weight="bold">
                 {author.name}
               </Text>
-              <Text typography="caption">{t('share_profile_message')}</Text>
             </View>
           </View>
-          <View style={Styles.row}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: 25,
+            }}>
             <View style={Styles.flex}>
               <Button
                 size="medium"
@@ -162,17 +177,25 @@ export default function Index({navigation, route}) {
   const renderAuthor = () => {
     if (author) {
       return (
-        <View style={Styles.row}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
           <Image style={styles.userImage} source={{uri: author?.image}} />
           <SizedBox width={8} />
-          <View style={Styles.flex}>
-            <Text typography="title" weight="bold">
+          <View>
+            <Text
+              style={{fontSize: 18, paddingTop: 16}}
+              typography="title"
+              weight="bold">
               {author?.name}
             </Text>
             <SizedBox height={8} />
             <Rating
               rate={author?.rate}
-              size={12}
+              size={16}
               disabled={true}
               style={styles.rateContent}
             />
@@ -184,8 +207,8 @@ export default function Index({navigation, route}) {
           </View>
           {user?.id === author.id && (
             <>
-              <IconButton onPress={onQrcode}>
-                <Icon name="qrcode-scan" />
+              <IconButton style={{marginLeft: 70}} onPress={onQrcode}>
+                <Icon size={26} name="qrcode-scan" />
               </IconButton>
               {renderQRCodeShare()}
             </>
@@ -274,7 +297,7 @@ export default function Index({navigation, route}) {
               <Button
                 onPress={onSubmit}
                 type="text"
-                size="small"
+                size="medium"
                 full={false}
                 textStyle={{color: theme.colors.primary}}>
                 {t('add')}

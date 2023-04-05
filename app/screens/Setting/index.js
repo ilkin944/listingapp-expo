@@ -221,109 +221,50 @@ export default function Index({navigation}) {
           };
         })}
       />
-      <ScrollView style={Styles.flex}>
-        <View
-          style={[
-            Styles.flex,
-            styles.container,
-            {backgroundColor: theme.colors.card},
-          ]}>
+      <ScrollView>
+        <View style={[styles.container, {backgroundColor: theme.colors.card}]}>
           <ListItem
             title={t('language')}
             trailing={
-              <View style={Styles.row}>
-                <Text typography="subtitle">
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <Text style={{fontSize: 18}} typography="subtitle">
                   {
                     getNational(languageStorage ?? Setting.defaultLanguage)
                       .title
                   }
                 </Text>
-                <Icon name="chevron-right" />
+                <Icon name="web" size={18} style={{marginLeft: 5}} />
               </View>
             }
             onPress={() => languageRef.current?.present()}
           />
           <Divider />
           <ListItem
-            title={t('theme')}
             trailing={
-              <View style={Styles.row}>
-                <View
-                  style={[
-                    styles.themeIcon,
-                    {
-                      backgroundColor: theme.colors.primary,
-                    },
-                  ]}
-                />
-                <Icon name="chevron-right" />
-              </View>
-            }
-            onPress={onChangeTheme}
-          />
-          <Divider />
-          <ListItem
-            title={t('dark_mode')}
-            trailing={
-              <View style={Styles.row}>
-                <Text typography="subtitle">
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <Text style={{fontSize: 18}} typography="subtitle">
                   {t(getTitleDarkMode(darkModeStorage))}
                 </Text>
-                <Icon name="chevron-right" />
+                <Icon
+                  name="theme-light-dark"
+                  size={18}
+                  style={{marginLeft: 5}}
+                />
               </View>
             }
             onPress={() => darkModeRef.current?.present()}
-          />
-          <Divider />
-          <ListItem
-            title={t('font')}
-            trailing={
-              <View style={Styles.row}>
-                <Text typography="subtitle">
-                  {fontStorage ?? Setting.defaultFont}
-                </Text>
-                <Icon name="chevron-right" />
-              </View>
-            }
-            onPress={() => fontRef.current?.present()}
-          />
-          {!Setting.storeReview && (
-            <>
-              <Divider />
-              <ListItem
-                title={t('domain')}
-                trailing={
-                  <View style={Styles.row}>
-                    <Text typography="subtitle">{domainStorage}</Text>
-                    <Icon name="chevron-right" />
-                  </View>
-                }
-                onPress={onDomain}
-              />
-              <Divider />
-              <ListItem
-                title={t('listing_style')}
-                trailing={
-                  <View style={Styles.row}>
-                    <Text typography="subtitle">
-                      {t(listingStyleStorage ?? 'basic')}
-                    </Text>
-                    <Icon name="chevron-right" />
-                  </View>
-                }
-                onPress={() => listingStyleRef.current?.present()}
-              />
-            </>
-          )}
-          <Divider />
-          <ListItem
-            title={t('version')}
-            trailing={
-              <View style={Styles.row}>
-                <Text typography="subtitle">{Setting.appVersion}</Text>
-                <Icon name="chevron-right" />
-              </View>
-            }
           />
         </View>
       </ScrollView>

@@ -18,7 +18,7 @@ export default class PaginationModel {
         total: json.total ?? 1,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 

@@ -32,7 +32,7 @@ export default class SubmitSettingModel {
         }),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

@@ -43,23 +43,29 @@ const Index = props => {
     }
 
     return (
-      <Pressable style={[Styles.row, Styles.flex]} onPress={onPress}>
+      <Pressable
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingTop: 10,
+          paddingBottom: 10,
+        }}
+        onPress={onPress}>
         <Image style={styles.image} source={{uri: user.image}} />
         <SizedBox width={8} />
         <View style={Styles.flex}>
-          <Text typography="subtitle" weight="bold">
+          <Text style={{fontSize: 16}} typography="subtitle" weight="bold">
             {user.name}
           </Text>
           {user?.description && (
             <>
               <SizedBox height={4} />
-              <Text typography="caption">{user.description}</Text>
             </>
           )}
           <SizedBox height={4} />
-          <Text typography="caption">{user.nickname}</Text>
         </View>
-        <Icon name="chevron-right" />
+        <Icon style={{marginRight: 10}} name="cog" />
       </Pressable>
     );
   };

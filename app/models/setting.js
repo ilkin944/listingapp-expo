@@ -114,7 +114,7 @@ export default class SettingModel {
         useViewAdmob: viewOptions.view_admob_use ?? true,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

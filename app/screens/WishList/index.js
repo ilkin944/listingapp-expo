@@ -13,7 +13,7 @@ import {
   SizedBox,
   Toast,
 } from '@components';
-import {FlatList, RefreshControl, Share, View} from 'react-native';
+import {FlatList, RefreshControl, Share, View, Text} from 'react-native';
 import {wishlistActions} from '@actions';
 import {wishlistSelect} from '@selectors';
 import {Setting, Styles} from '@configs';
@@ -156,13 +156,18 @@ export default function WishList({navigation}) {
         <View style={styles.bottomSheetContainer}>
           <ListItem
             title={t('booking')}
-            leading={<Icon name="bookmark-outline" />}
             onPress={() => onBooking(selectedRef.current)}
           />
+          <Icon name="bookmark-outline" />
+
           <Divider />
           <ListItem
             title={t('share')}
-            leading={<Icon name="share-outline" />}
+            leading={
+              <>
+                <Icon name="share-outline" /> <Text>{t('share')}</Text>
+              </>
+            }
             onPress={() => onShare(selectedRef.current)}
           />
           <Divider />

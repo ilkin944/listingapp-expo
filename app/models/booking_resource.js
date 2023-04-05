@@ -18,7 +18,7 @@ export default class BookingResourceModel {
         total: json.total ?? 0,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

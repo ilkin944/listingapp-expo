@@ -377,18 +377,22 @@ function Listing(props) {
           size="small"
         />
         <SizedBox height={12} />
-        <View style={Styles.row}>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={onFilter}
             style={[
               styles.filterItem,
               {
                 borderColor: theme.colors.border,
+                width: 100,
+                height: 45,
               },
             ]}>
-            <Icon name={'filter-outline'} size={14} />
+            <Icon name={'filter-outline'} size={16} />
             <SizedBox width={4} />
-            <Text typography="subtitle">{t('filter')}</Text>
+            <Text style={{fontSize: 15}} typography="subtitle">
+              {t('filter')}
+            </Text>
           </TouchableOpacity>
           <SizedBox width={12} />
           <TouchableOpacity
@@ -397,11 +401,13 @@ function Listing(props) {
               styles.filterItem,
               {
                 borderColor: theme.colors.border,
+                width: 75,
+                height: 45,
               },
             ]}>
-            <Icon name={'sort-variant'} size={14} />
+            <Icon name={'sort-variant'} size={16} />
             <SizedBox width={4} />
-            <Text typography="subtitle">{t('sort')}</Text>
+            <Text style={{fontSize: 15}} typography="subtitle">{t('sort')}</Text>
           </TouchableOpacity>
         </View>
         <SizedBox height={8} />

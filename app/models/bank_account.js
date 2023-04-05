@@ -22,7 +22,7 @@ export default class BankAccountModel {
         bankSwift: json.bank_swift ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      // //console.log(e.toString());
     }
   }
 }

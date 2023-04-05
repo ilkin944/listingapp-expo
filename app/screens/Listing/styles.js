@@ -2,7 +2,14 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   listContainer: {flexGrow: 1, paddingVertical: 8},
-  item: {marginBottom: 16},
+  item: {
+    marginBottom: 16,
+    borderWidth: 1,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+
   bottomSheetContainer: {
     paddingLeft: 16,
     paddingTop: 16,
@@ -13,7 +20,6 @@ export default StyleSheet.create({
     bottom: 0,
     width: '100%',
     flexDirection: 'column',
-    alignItems: 'flex-end',
   },
   carouselItem: {
     padding: 8,

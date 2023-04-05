@@ -150,37 +150,14 @@ export default function Index({navigation, route}) {
    * @returns {JSX.Element}
    */
   const renderItem = ({item}) => {
-    switch (modeView) {
-      case 'block':
+     {
         return (
           <ProductItem
             item={item}
-            style={styles.item}
+            style={styles.blockItem}
             onPress={() => onPressProduct(item)}
             type={modeView}
           />
-        );
-      case 'grid':
-        return (
-          <View style={[Styles.flex, Styles.paddingHorizontal8]}>
-            <ProductItem
-              item={item}
-              style={styles.item}
-              onPress={() => onPressProduct(item)}
-              type={modeView}
-            />
-          </View>
-        );
-      default:
-        return (
-          <View style={Styles.paddingHorizontal16}>
-            <ProductItem
-              item={item}
-              style={styles.item}
-              onPress={() => onPressProduct(item)}
-              type={modeView}
-            />
-          </View>
         );
     }
   };
@@ -372,8 +349,6 @@ export default function Index({navigation, route}) {
         <Action
           style={{backgroundColor: theme.colors.card}}
           sort={sort}
-          modeView={modeView}
-          onView={onChangeViewStyle}
           onSort={sortRef.current?.present}
           onFilter={onFilter}
         />

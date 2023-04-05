@@ -1,8 +1,11 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ProductItem, SizedBox, Text} from '@components';
+import {CategoryItem, SizedBox, Text} from '@components';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
+import {FlatList} from 'react-native';
+import {Styles} from '@configs';
+import {Divider} from '@components';
 
 export default function Recent(props) {
   const {t} = useTranslation();
@@ -12,32 +15,49 @@ export default function Recent(props) {
    * render content
    * @returns {unknown[]}
    */
-  const renderContent = () => {
-    return data.map((item, index) => {
-      return (
-        <ProductItem
-          key={(item?.id ?? index).toString()}
-          item={item}
-          style={styles.item}
-          onPress={() => onPress(item)}
-          type="small"
-        />
-      );
-    });
-  };
 
+  const renderItem = ({item, index}) => (
+    <View style={styles.item}>
+      <CategoryItem
+        key={(item?.id ?? index).toString()}
+        item={item}
+        style={styles.item}
+        onPress={() => onPress(item)}
+        type="small"
+      />
+    </View>
+  );
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text typography="h4" weight="bold">
+        <Text style={{fontSize: 22}} typography="h4" weight="bold">
           {t('recent_location')}
         </Text>
         <SizedBox height={2} />
-        <Text typography="subtitle" type="secondary">
-          {t('let_find_most_interesting')}
-        </Text>
       </View>
-      <View style={styles.contentList}>{renderContent()}</View>
+
+      <FlatList
+        data={data}
+        contentContainerStyle={Styles.padding8}
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => `${item?.id}${index}`}
+      />
+      <View
+        style={{
+          width: '95%',
+          backgroundColor: '#D3D3D3',
+          marginTop: 10,
+          marginLeft: 10,
+        }}
+      />
+      <Divider
+        style={{
+          marginBottom: 10,
+          width: '85%',
+        }}
+      />
     </>
   );
 }
@@ -57,11 +77,18 @@ Recent.defaultProps = {
 const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: 16,
+    marginTop: 15,
   },
   item: {
-    marginBottom: 16,
+    marginBottom: 10,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    borderWidth: 1,
+    marginRight: 5,
+    height: 230,
+    width: 320,
+    marginLeft: 10,
+    borderRadius: 10,
   },
   contentList: {paddingHorizontal: 16, paddingVertical: 8},
 });

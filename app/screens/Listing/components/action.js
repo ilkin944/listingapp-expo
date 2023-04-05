@@ -9,26 +9,16 @@ export default function Action(props) {
   const {t} = useTranslation();
   const {style, sort, modeView, onSort, onView, onFilter} = props;
 
-  /**
-   * export icon mode view
-   */
-  const iconModeView = () => {
-    switch (modeView) {
-      case 'list':
-        return 'view-grid-outline';
-      case 'block':
-        return 'view-column-outline';
-      case 'grid':
-        return 'format-list-bulleted';
-      default:
-        return 'format-list-bulleted';
-    }
-  };
-
   return (
     <View style={[styles.container, style]}>
-      <View style={Styles.flex}>
-        <View style={Styles.row}>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View
+          style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
           <IconButton onPress={onSort}>
             <Icon name="swap-vertical" />
           </IconButton>
@@ -37,14 +27,18 @@ export default function Action(props) {
           </Text>
         </View>
       </View>
-      <View style={[Styles.row, Styles.paddingHorizontal16]}>
-        <IconButton onPress={onView}>
-          <Icon name={iconModeView()} />
-        </IconButton>
+      <View
+        style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
         <View style={Styles.paddingVertical8}>
           <Divider direction="vertical" />
         </View>
-        <View style={Styles.row}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginRight: 15,
+          }}>
           <IconButton onPress={onFilter}>
             <Icon name="filter-outline" />
           </IconButton>

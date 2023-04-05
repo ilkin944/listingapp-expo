@@ -115,12 +115,12 @@ export default function SignUp({navigation, route}) {
         <Text typography="title" weight="medium" type="secondary">
           {t('sign_up_tour')}
         </Text>
-        <SizedBox height={24} />
+        <SizedBox height={16} />
         <TextInput
           ref={usernameRef}
           defaultValue={username}
-          label={t('account')}
-          placeholder={t('input_account')}
+          label={t('name_of_user_subtitle')}
+          placeholder={t('name_of_user')}
           onChangeText={onChangeUsername}
           onFocus={() => {
             setErrorUsername(null);
@@ -130,6 +130,22 @@ export default function SignUp({navigation, route}) {
           error={t(errorUsername)}
           size="small"
         />
+        <SizedBox height={24} />
+        <TextInput
+          ref={usernameRef}
+          defaultValue={username}
+          label={t('surname_of_user_subtitle')}
+          placeholder={t('surname_of_user')}
+          onChangeText={onChangeUsername}
+          onFocus={() => {
+            setErrorUsername(null);
+          }}
+          onBlur={() => onChangeUsername(username)}
+          onSubmitEditing={() => passwordRef.current?.focus()}
+          error={t(errorUsername)}
+          size="small"
+        />
+
         <SizedBox height={16} />
         <TextInput
           ref={passwordRef}

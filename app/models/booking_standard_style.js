@@ -51,7 +51,7 @@ export default class BookingStandardStyleModel extends BookingStyleModel {
         startDate: moment(json.start_date),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

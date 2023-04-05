@@ -24,7 +24,7 @@ export default class RateSummaryModel {
         total: json.rating_count ?? 0,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

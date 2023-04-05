@@ -966,7 +966,7 @@ export default function Index({ navigation, route }) {
             onPress={() => {
 
               onInfoAction(`tel://${product?.phone}`)
-              { console.log(product.phone) }
+              // { console.log(product.phone) }
             }
             }
           />

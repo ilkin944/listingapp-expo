@@ -1,7 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {RefreshControl, useWindowDimensions, View} from 'react-native';
 import Animated, {
   interpolate,
+  log,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
@@ -35,6 +36,32 @@ export default function Home({navigation}) {
   const {theme} = useContext(Application);
   const {t} = useTranslation();
   const home = useSelector(homeSelect);
+
+  const [poularLocations, setPoularLocations] = useState([]);
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    // Fetch data from API
+    const listings = fetch(
+      'https://adminpanelback.onrender.com/api/listings',
+    ).then(res => res.json());
+    const categories = fetch(
+      'https://adminpanelback.onrender.com/api/categories',
+    ).then(res => res.json());
+
+    Promise.all([listings, categories])
+      .then(responses => {
+        // Handle responses here
+        const [response1, response2] = responses;
+        setCategories(response2);
+        setPoularLocations(response1);
+      })
+
+      .catch(error => {
+        // Handle error here
+        console.error(error);
+      });
+  }, []);
+
   const translationY = useSharedValue(0);
   const scrollHandler = useAnimatedScrollHandler(
     ({layoutMeasurement, contentOffset, contentSize}) => {
@@ -72,13 +99,12 @@ export default function Home({navigation}) {
   const onScan = () => {
     navigation.navigate('ScanQR');
   };
-
   /**
-   * onPress category
+   * render item location
    * @param item
    */
   const onCategory = item => {
-    if (item?.hasChild) {
+    if (item?.category) {
       navigation.push('CategoryList', {item});
     } else {
       navigation.navigate('Listing', {item});
@@ -89,6 +115,7 @@ export default function Home({navigation}) {
    * on press product
    */
   const onPressProduct = item => {
+    alert(JSON.stringify(item));
     navigation.navigate('ProductDetail', {item});
   };
 
@@ -156,16 +183,20 @@ export default function Home({navigation}) {
         <SafeAreaView edges={['left', 'right']} mode="margin">
           <SizedBox height={bannerHeight} />
           <SizedBox height={12} />
-          <Categories
-            data={home?.category}
-            onPress={onCategory}
-            onCategoryList={onCategoryList}
-          />
           <Story />
+          {categories.length > 0 && (
+            <Categories
+              data={categories}
+              onPress={onCategory}
+              onCategoryList={onCategoryList}
+            />
+          )}
           <SizedBox height={12} />
-          <Locations data={home?.location} onPress={onCategory} />
+          <Locations data={poularLocations} onPress={onPressProduct} />
           <Recent data={home?.recent} onPress={onPressProduct} />
-          <Locations data={home?.location} onPress={onCategory} />
+          <Locations data={poularLocations} onPress={onPressProduct} />
+
+          <SizedBox height={12} />
           <Mekanlar data={home?.recent} onPress={onPressProduct} />
           <CanliMusiqiOlanlar data={home?.recent} onPress={onPressProduct} />
         </SafeAreaView>

@@ -80,7 +80,7 @@ export default class BookingModel {
         createdBy: `${json.first_name} ${json.last_name}`,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 
@@ -95,7 +95,7 @@ export default class BookingModel {
         title: json.title ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

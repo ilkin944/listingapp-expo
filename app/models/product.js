@@ -194,7 +194,7 @@ export default class ProductModel {
         bookingStyle: json.booking_style ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 
@@ -208,7 +208,7 @@ export default class ProductModel {
         title: json.post_title ?? '',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

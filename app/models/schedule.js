@@ -30,7 +30,7 @@ export default class ScheduleModel {
         end: arr[1] ?? '00:00',
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 
@@ -45,7 +45,7 @@ export default class ScheduleModel {
         end: this.formatTime(json.end),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

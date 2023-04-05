@@ -51,7 +51,7 @@ export default class BookingTableStyleModel extends BookingStyleModel {
         tableOptions: json.select_options ?? [],
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

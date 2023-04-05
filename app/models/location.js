@@ -19,7 +19,7 @@ export default class LocationModel {
         latitude: parseFloat(json.latitude ?? '0'),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

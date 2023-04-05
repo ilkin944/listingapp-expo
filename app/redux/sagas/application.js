@@ -61,7 +61,7 @@ function* onSettingSync() {
       yield put({type: actionTypes.SAVE_SETTING, setting});
     }
   } catch (error) {
-    console.log(error.toString());
+    // console.log(error.toString());
   }
 }
 

@@ -30,7 +30,7 @@ export default class CommentModel {
         rate: parseFloat(json.rate ?? '0'),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

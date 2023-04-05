@@ -6,11 +6,11 @@ import {
   Empty,
   Icon,
   ProductItem,
-  ScreenContainer,
   SearchPicker,
   SizedBox,
   Text,
 } from '@components';
+import {ScrollView} from 'react-native';
 import {
   ActivityIndicator,
   FlatList,
@@ -23,7 +23,6 @@ import {Styles} from '@configs';
 import {discoveryActions} from '@actions';
 import {discoverySelect} from '@selectors';
 import {convertIcon} from '@utils';
-
 export default function Discovery({navigation}) {
   const {theme} = useContext(Application);
   const {t} = useTranslation();
@@ -85,7 +84,41 @@ export default function Discovery({navigation}) {
     return (
       <>
         <View style={styles.item}>
-          <View style={Styles.row}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{paddingLeft: 2}}>
+              <Text style={{fontSize: 22}} typography="title" weight="bold">
+                {item.category?.title}
+              </Text>
+              <SizedBox height={4} />
+              <Text
+                style={{fontSize: 14}}
+                typography="caption"
+                type="secondary">
+                {item.category?.count} {t('location')}
+              </Text>
+              <TouchableOpacity onPress={() => onPressCategory(item)}>
+                <Text
+                  style={{
+                    color: 'orange',
+                    fontSize: 14,
+                    borderWidth: 1,
+                    padding: 4,
+                    marginTop: 4,
+                    marginBottom: 4,
+                    borderColor: 'orange',
+                    borderRadius: 5,
+                  }}
+                  typography="caption"
+                  color="secondary">
+                  {t('see_more')}
+                </Text>
+              </TouchableOpacity>
+            </View>
             <View
               style={[
                 styles.iconContainer,
@@ -100,23 +133,7 @@ export default function Discovery({navigation}) {
                 type="FontAwesome5"
               />
             </View>
-            <View style={Styles.paddingHorizontal8}>
-              <Text typography="title" weight="bold">
-                {item.category?.title}
-              </Text>
-              <SizedBox height={4} />
-              <Text typography="caption" type="secondary">
-                {item.category?.count} {t('location')}
-              </Text>
-            </View>
           </View>
-          <TouchableOpacity
-            style={Styles.padding4}
-            onPress={() => onPressCategory(item)}>
-            <Text typography="caption" color="secondary">
-              {t('see_more')}
-            </Text>
-          </TouchableOpacity>
         </View>
         <FlatList
           contentContainerStyle={Styles.padding8}
@@ -137,13 +154,11 @@ export default function Discovery({navigation}) {
    */
   const renderProduct = ({item}) => {
     return (
-      <View style={styles.productItem}>
-        <ProductItem
-          item={item}
-          type="thumb"
-          onPress={() => onPressProduct(item)}
-        />
-      </View>
+      <ProductItem
+        item={item}
+        type="thumb"
+        onPress={() => onPressProduct(item)}
+      />
     );
   };
 
@@ -186,11 +201,15 @@ export default function Discovery({navigation}) {
   };
 
   return (
-    <ScreenContainer navigation={navigation} edges={['left', 'right', 'top']}>
+    <>
       <View style={styles.searchContainer}>
-        <SearchPicker onSearch={onSearch} onScan={onScan} />
+        <SearchPicker
+          style={styles.searchSelf}
+          onSearch={onSearch}
+          onScan={onScan}
+        />
       </View>
       {renderContent()}
-    </ScreenContainer>
+    </>
   );
 }

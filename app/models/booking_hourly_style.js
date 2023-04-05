@@ -57,7 +57,7 @@ export default class BookingHourlyStyleModel extends BookingStyleModel {
         }),
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

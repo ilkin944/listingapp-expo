@@ -166,11 +166,13 @@ function Review(props) {
               styles.filterItem,
               {
                 borderColor: theme.colors.border,
+                width: 75,
+                height: 45,
               },
             ]}>
-            <Icon name={'sort-variant'} size={14} />
+            <Icon name={'sort-variant'} size={16} />
             <SizedBox width={4} />
-            <Text typography="subtitle">{t('sort')}</Text>
+            <Text style={{fontSize: 15}} typography="subtitle">{t('sort')}</Text>
           </TouchableOpacity>
         </View>
         <SizedBox height={8} />

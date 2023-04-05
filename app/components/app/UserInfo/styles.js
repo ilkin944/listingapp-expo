@@ -13,5 +13,10 @@ export default StyleSheet.create({
     height: 60,
     borderRadius: 30,
     overflow: 'hidden',
+    marginLeft: 5,
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 });

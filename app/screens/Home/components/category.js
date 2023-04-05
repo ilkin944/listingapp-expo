@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Application, ContentLoader, Icon, Text} from '@components';
 import {convertIcon} from '@utils';
 import {useTranslation} from 'react-i18next';
+import {Divider} from '@rneui/themed';
 
 export default function Categories(props) {
   const {t} = useTranslation();
@@ -22,16 +23,15 @@ export default function Categories(props) {
             .filter((item, index) => index < 7)
             .map(item => (
               <Pressable
-                key={item.id}
+                key={item._id}
                 onPress={() => onPress(item)}
                 style={styles.item}>
-                <View
-                  style={[styles.iconContainer, {backgroundColor: item.color}]}>
+                <View style={[styles.iconContainer, {backgroundColor: 'blue'}]}>
                   <Icon
                     {...convertIcon(item.icon)}
                     size={18}
                     color="white"
-                    type="FontAwesome5"
+                    type="AntDesign"
                   />
                 </View>
                 <Text
@@ -39,7 +39,7 @@ export default function Categories(props) {
                   style={styles.title}
                   numberOfLines={2}
                   ellipsizeMode="middle">
-                  {item.title}
+                  {item.name}
                 </Text>
               </Pressable>
             ))}
@@ -83,6 +83,7 @@ export default function Categories(props) {
   return (
     <View style={styles.container}>
       <View style={styles.row}>{renderContent()}</View>
+      <Divider />
     </View>
   );
 }
@@ -102,27 +103,27 @@ Categories.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingHorizontal: 16,
+    marginTop: 15,
   },
   row: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
   },
   item: {
-    width: '25%',
+    width: '16.5%',
     alignItems: 'center',
     padding: 4,
+    marginBottom: 15,
   },
   iconContainer: {
-    width: 36,
-    height: 36,
-    borderRadius: 23,
+    width: 45,
+    height: 45,
+    borderRadius: 50,
     marginBottom: 4,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
   },
-  title: {textAlign: 'center'},
+  title: {textAlign: 'center', fontSize: 13},
   titleLoading: {
     marginTop: 4,
     height: 8,

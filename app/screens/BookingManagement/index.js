@@ -58,8 +58,7 @@ export default function Index({navigation}) {
               renderLabel={({route: routeTab, focused}) => (
                 <Text
                   typography="title"
-                  weight={focused ? 'medium' : 'regular'}
-                  style={Styles.paddingHorizontal8}>
+                  weight={focused ? 'medium' : 'regular'}>
                   {routeTab.title}
                 </Text>
               )}

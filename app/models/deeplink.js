@@ -58,7 +58,7 @@ export default class DeeplinkModel {
         authentication,
       });
     } catch (e) {
-      console.log(e.toString());
+      //console.log(e.toString());
     }
   }
 }

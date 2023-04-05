@@ -141,7 +141,10 @@ export default function Index({navigation, route}) {
           <SizedBox height={16} />
           <View style={Styles.row}>
             <View style={Styles.flex}>
-              <Text typography="subtitle" type="secondary">
+              <Text
+                style={{fontSize: 25}}
+                typography="subtitle"
+                type="secondary">
                 {t('status')}
               </Text>
               <SizedBox height={8} />

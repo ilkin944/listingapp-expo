@@ -1,5 +1,6 @@
 import InstaStory from 'react-native-insta-story';
 import {View, Text} from 'react-native';
+import {Divider} from '@rneui/themed';
 
 export default function Story() {
   const data = [
@@ -91,17 +92,29 @@ export default function Story() {
     },
   ];
   return (
-    <InstaStory
-      data={data}
-      duration={10}
-      onStart={item => console.log(item)}
-      onClose={item => console.log('close: ', item)}
-      customSwipeUpComponent={
-        <View>
-          <Text>Swipe</Text>
-        </View>
-      }
-      style={{marginTop: 30}}
-    />
+    <>
+      <View
+        style={{
+          width: '95%',
+          backgroundColor: '#D3D3D3',
+          height: 1,
+          marginBottom: 10,
+          marginLeft: 10,
+        }}
+      />
+      <InstaStory
+        data={data}
+        duration={10}
+        onStart={item => console.log(item)}
+        onClose={item => console.log('close: ', item)}
+        customSwipeUpComponent={
+          <View>
+            <Text>Swipe</Text>
+          </View>
+        }
+        style={{marginBottom: 10}}
+      />
+      <Divider />
+    </>
   );
 }

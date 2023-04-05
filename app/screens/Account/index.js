@@ -114,15 +114,19 @@ export default function WishList({navigation}) {
                 type="text"
                 size="small"
                 full={false}
-                textStyle={{color: theme.colors.primary}}>
-                {t('sign_out')}
+                textStyle={{color: theme.colors.primary, fontSize: 18}}>
+                <Icon name="logout" />
               </Button>
             </View>
           );
         },
       }}>
       <ScrollView style={Styles.flex}>
-        <UserInfo user={user} style={Styles.margin8} onPress={onProfile} />
+        <UserInfo
+          style={{width: '95%', margin: 8}}
+          user={user}
+          onPress={onProfile}
+        />
         <View
           style={[
             Styles.flex,
@@ -161,11 +165,6 @@ export default function WishList({navigation}) {
           {!Setting.storeReview && (
             <>
               <Divider />
-              <ListItem
-                title={t('developer')}
-                trailing={<Icon name="chevron-right" />}
-                onPress={onDeveloper}
-              />
             </>
           )}
         </View>
