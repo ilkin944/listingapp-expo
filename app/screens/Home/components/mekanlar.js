@@ -31,26 +31,11 @@ export default function Mekanlar(props) {
     <>
       <View style={styles.titleContainer}>
         <Text style={{fontSize: 22}} typography="h4" weight="bold">
-          {t('recent_location')}
+          {t('onə_cıxanlar')}
         </Text>
         <SizedBox height={2} />
       </View>
-
-   
-      <View
-        style={{
-          width: '95%',
-          backgroundColor: '#D3D3D3',
-          marginTop: 10,
-          marginLeft: 10,
-        }}
-      />
-      <Divider
-        style={{
-          marginBottom: 10,
-          width: '85%',
-        }}
-      />
+      <Divider />
     </>
   );
 }

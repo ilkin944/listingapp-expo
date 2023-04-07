@@ -31,17 +31,14 @@ const Index = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => carouselRef.current);
 
-  /**
-   * render item image
-   * @param item
-   * @returns {JSX.Element}
-   */
-  const renderItem = ({item}) => {
+  const renderItem = item => {
     return (
       <Pressable style={Styles.flex} onPress={() => onPress(item)}>
         <Image
-          source={{uri: item.image}}
-          style={Styles.flex}
+          source={{
+            uri: item.item.image,
+          }}
+          style={{width: '100%'}}
           resizeMode={resizeMode}
         />
       </Pressable>
@@ -55,9 +52,9 @@ const Index = forwardRef((props, ref) => {
           <Carousel
             ref={carouselRef}
             data={data}
-            renderItem={renderItem}
             sliderWidth={width}
             itemWidth={width}
+            renderItem={renderItem}
             loop={true}
             currentIndex={active}
             autoplay={autoplay}

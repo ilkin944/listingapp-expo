@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {
   FlatList,
   Linking,
@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { useHeaderHeight } from '@react-navigation/elements';
+import {useHeaderHeight} from '@react-navigation/elements';
 import Animated from 'react-native-reanimated';
 import {
   Application,
@@ -31,29 +31,29 @@ import {
   useHeaderAnimated,
   Video,
 } from '@components';
-import { Colors, Images, Opacity, Setting, Styles } from '@configs';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { listingActions, wishlistActions } from '@actions';
+import {Colors, Images, Opacity, Setting, Styles} from '@configs';
+import {useTranslation} from 'react-i18next';
+import {useDispatch, useSelector} from 'react-redux';
+import {listingActions, wishlistActions} from '@actions';
 import styles from './styles';
-import { convertIcon, enableExperimental } from '@utils';
+import {convertIcon, enableExperimental} from '@utils';
 import Navigator from '@navigator';
-import { Circle } from 'react-native-progress';
-import { userSelect } from '@selectors';
+import {Circle} from 'react-native-progress';
+import {userSelect} from '@selectors';
 import QRCode from 'react-native-qrcode-svg';
 import * as Clipboard from 'expo-clipboard';
 
-export default function Index({ navigation, route }) {
-  const { t } = useTranslation();
+export default function Index({navigation, route}) {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const heightHeader = useHeaderHeight();
-  const { height: heightDevice, width: widthDevice } = useWindowDimensions();
-  const { theme } = useContext(Application);
+  const {height: heightDevice, width: widthDevice} = useWindowDimensions();
+  const {theme} = useContext(Application);
   const userSession = useSelector(userSelect);
   const bottomSheetShare = useRef();
   const phoneRef = useRef();
   const addressRef = useRef();
-  const { onScroll, headerStyle } = useHeaderAnimated();
+  const {onScroll, headerStyle} = useHeaderAnimated();
 
   const [product, setProduct] = useState();
   const [showVideo, setShowVideo] = useState(true);
@@ -65,7 +65,7 @@ export default function Index({ navigation, route }) {
 
   useEffect(() => {
     dispatch(
-      listingActions.onDetail(route.params?.item, ({ data }) => {
+      listingActions.onDetail(route.params?.item, ({data}) => {
         setProduct(data);
       }),
     );
@@ -76,7 +76,7 @@ export default function Index({ navigation, route }) {
    */
   const onLoad = () => {
     dispatch(
-      listingActions.onDetail(route.params?.item, ({ data }) => {
+      listingActions.onDetail(route.params?.item, ({data}) => {
         setProduct(data);
       }),
     );
@@ -101,7 +101,7 @@ export default function Index({ navigation, route }) {
    * on copy to clipboard
    * @param link
    */
-  const onCopy = async (link) => {
+  const onCopy = async link => {
     await Clipboard.setStringAsync(link);
     Toast.show(t('link_already_copy_clipboard'));
   };
@@ -111,7 +111,7 @@ export default function Index({ navigation, route }) {
    */
   const onMap = () => {
     if (product) {
-      navigation.navigate('PickerLocation', { item: product?.location });
+      navigation.navigate('PickerLocation', {item: product?.location});
     }
   };
 
@@ -120,7 +120,7 @@ export default function Index({ navigation, route }) {
    */
   const onGallery = () => {
     if (product) {
-      navigation.navigate('Gallery', { item: product });
+      navigation.navigate('Gallery', {item: product});
     }
   };
 
@@ -128,21 +128,21 @@ export default function Index({ navigation, route }) {
    * on author profile
    */
   const onAuthor = () => {
-    Navigator.navigateAuth('Profile', { item: product?.author });
+    Navigator.navigateAuth('Profile', {item: product?.author});
   };
 
   /**
    * on booking
    */
   const onBooking = () => {
-    Navigator.navigateAuth('Booking', { item: product });
+    Navigator.navigateAuth('Booking', {item: product});
   };
 
   /**
    * on review
    */
   const onReview = () => {
-    Navigator.navigateAuth('Review', { item: product, onResult: onLoad });
+    Navigator.navigateAuth('Review', {item: product, onResult: onLoad});
   };
 
   /**
@@ -151,16 +151,16 @@ export default function Index({ navigation, route }) {
   const onFavorite = () => {
     const callback = () => {
       const favorite = !product?.favorite;
-      setProduct({ ...product, favorite });
+      setProduct({...product, favorite});
       if (favorite) {
         dispatch(
-          wishlistActions.onAdd(product, ({ message }) => {
+          wishlistActions.onAdd(product, ({message}) => {
             Toast.show(t(message));
           }),
         );
       } else {
         dispatch(
-          wishlistActions.onDeleted(product, ({ message }) => {
+          wishlistActions.onDeleted(product, ({message}) => {
             Toast.show(t(message));
           }),
         );
@@ -182,7 +182,7 @@ export default function Index({ navigation, route }) {
    * on press product
    */
   const onPressProduct = item => {
-    navigation.push('ProductDetail', { item });
+    navigation.push('ProductDetail', {item});
   };
 
   /**
@@ -263,7 +263,7 @@ export default function Index({ navigation, route }) {
                 onPress={() => setShowVideo(!showVideo)}
                 style={[
                   styles.videoButton,
-                  { backgroundColor: theme.colors.border + Opacity[60] },
+                  {backgroundColor: theme.colors.border + Opacity[60]},
                 ]}>
                 <Icon
                   name={showVideo ? 'image-outline' : 'television-play'}
@@ -277,7 +277,7 @@ export default function Index({ navigation, route }) {
                     onPress={onMute}
                     style={[
                       styles.videoButton,
-                      { backgroundColor: theme.colors.border + Opacity[60] },
+                      {backgroundColor: theme.colors.border + Opacity[60]},
                     ]}>
                     <Icon
                       name={muted ? 'volume-variant-off' : 'volume-high'}
@@ -291,7 +291,7 @@ export default function Index({ navigation, route }) {
         </View>
       );
     }
-    return <View style={{ height: heightDevice * 0.3 }}>{content}</View>;
+    return <View style={{height: heightDevice * 0.3}}>{content}</View>;
   };
 
   /**
@@ -307,7 +307,7 @@ export default function Index({ navigation, route }) {
               style={[Styles.flex, Styles.row]}
               onPress={onAuthor}>
               <Image
-                source={{ uri: product?.author?.image }}
+                source={{uri: product?.author?.image}}
                 style={styles.userImage}
               />
               <SizedBox width={8} />
@@ -324,7 +324,7 @@ export default function Index({ navigation, route }) {
               <View
                 style={[
                   styles.statusContent,
-                  { backgroundColor: theme.colors.primary },
+                  {backgroundColor: theme.colors.primary},
                 ]}>
                 <Text typography="subtitle" type="secondary" color="white">
                   {product?.status}
@@ -371,7 +371,7 @@ export default function Index({ navigation, route }) {
                 <View
                   style={[
                     styles.tagRate,
-                    { backgroundColor: theme.colors.primary },
+                    {backgroundColor: theme.colors.primary},
                   ]}>
                   <Text typography="caption" weight="bold" color="white">
                     {product?.rate}
@@ -620,7 +620,7 @@ export default function Index({ navigation, route }) {
                             Toast.show(t('download_success'));
                           }}
                           link={item.url}>
-                          {({ percent, uri, download, open }) => {
+                          {({percent, uri, download, open}) => {
                             const icon = uri ? 'check' : 'download';
                             let trailing = (
                               <Icon
@@ -839,7 +839,7 @@ export default function Index({ navigation, route }) {
                     />
                   }
                   style={styles.tagItem}
-                  textStyle={{ color: theme.colors.secondary }}>
+                  textStyle={{color: theme.colors.secondary}}>
                   {item.title}
                 </Chip>
               );
@@ -870,7 +870,7 @@ export default function Index({ navigation, route }) {
                 <Chip
                   key={item.id}
                   style={styles.tagItem}
-                  textStyle={{ color: theme.colors.secondary }}>
+                  textStyle={{color: theme.colors.secondary}}>
                   {item.title}
                 </Chip>
               );
@@ -902,7 +902,7 @@ export default function Index({ navigation, route }) {
             contentContainerStyle={Styles.paddingHorizontal8}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            renderItem={({ item }) => {
+            renderItem={({item}) => {
               return (
                 <ProductItem
                   item={item}
@@ -910,7 +910,7 @@ export default function Index({ navigation, route }) {
                   onPress={() => onPressProduct(item)}
                   style={[
                     Styles.paddingHorizontal8,
-                    { width: (widthDevice - 16) / 2 },
+                    {width: (widthDevice - 16) / 2},
                   ]}
                 />
               );
@@ -964,11 +964,9 @@ export default function Index({ navigation, route }) {
             title="Telefon"
             leading={<Image source={Images.phone} />}
             onPress={() => {
-
-              onInfoAction(`tel://${product?.phone}`)
+              onInfoAction(`tel://${product?.phone}`);
               // { console.log(product.phone) }
-            }
-            }
+            }}
           />
           <ListItem
             title="WhatsApp"
@@ -1040,22 +1038,41 @@ export default function Index({ navigation, route }) {
     return (
       <BottomSheetView ref={bottomSheetShare}>
         <View style={styles.bottomSheetShare}>
-          <View style={Styles.row}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 15,
+              paddingTop: 15,
+              paddingBottom: 10,
+            }}>
             <Image
-              source={{ uri: product?.image?.thumb }}
-              style={styles.userImageShare}
+              source={{uri: product?.image?.thumb}}
+              style={{width: 85, height: 85, borderRadius: 50}}
             />
             <SizedBox width={8} />
-            <View style={Styles.flex}>
-              <Text typography="title" weight="bold">
+            <View style={{display: 'flex', alignItems: 'flex-end'}}>
+              <Text style={{fontSize: 20}} typography="title" weight="bold">
                 {product?.title}
               </Text>
-              <Text typography="caption">{t('share_listing_message')}</Text>
+              <Text style={{fontSize: 15, color: 'grey'}} typography="caption">
+                {t('share_listing_message')}
+              </Text>
             </View>
           </View>
-          <View style={Styles.row}>
-            <View style={Styles.flex}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'start',
+            }}>
+            <View
+              style={{display: 'flex', flexDirection: 'column', width: 200}}>
               <Button
+                style={{display: 'flex', alignItems: 'center', height: 70}}
                 size="medium"
                 type="outline"
                 onPress={onShare}
@@ -1070,6 +1087,7 @@ export default function Index({ navigation, route }) {
               </Button>
               <SizedBox height={16} />
               <Button
+                style={{height: 70}}
                 size="medium"
                 onPress={() => onCopy(product?.link)}
                 leading={
@@ -1082,7 +1100,7 @@ export default function Index({ navigation, route }) {
             <QRCode
               value={`listar://qrcode?type=listing&action=view&id=${product?.id}`}
               size={160}
-              logo={{ uri: product?.image?.thumb }}
+              logo={{uri: product?.image?.thumb}}
               logoSize={24}
               logoBackgroundColor={Colors.white}
             />
@@ -1106,7 +1124,7 @@ export default function Index({ navigation, route }) {
             <IconButton
               onPress={onMap}
               size="small"
-              style={{ backgroundColor: theme.colors.border + Opacity[60] }}>
+              style={{backgroundColor: theme.colors.border + Opacity[60]}}>
               <Icon name="map-legend" />
             </IconButton>
           </>
@@ -1119,7 +1137,7 @@ export default function Index({ navigation, route }) {
             <IconButton
               onPress={onGallery}
               size="small"
-              style={{ backgroundColor: theme.colors.border + Opacity[60] }}>
+              style={{backgroundColor: theme.colors.border + Opacity[60]}}>
               <Icon name="image-multiple-outline" />
             </IconButton>
           </>
@@ -1131,7 +1149,7 @@ export default function Index({ navigation, route }) {
           <IconButton
             onPress={() => bottomSheetShare.current?.present()}
             size="small"
-            style={{ backgroundColor: theme.colors.border + Opacity[60] }}>
+            style={{backgroundColor: theme.colors.border + Opacity[60]}}>
             <Icon name="share-outline" />
           </IconButton>
           {locationAction}

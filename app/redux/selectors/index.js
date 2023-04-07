@@ -8,7 +8,7 @@ export const languageSelect = state => state.application.language;
 export const onboardSelect = state => state.application.onboard;
 export const listingStyleSelect = state => state.application.listing;
 export const userSelect = state => state.auth.user;
-export const homeSelect = state => state.home;
+// export const homeSelect = state => state.home;
 export const discoverySelect = state => state.discovery;
 export const wishlistSelect = state => state.wishlist;
 export const searchSelect = state => state.search;
