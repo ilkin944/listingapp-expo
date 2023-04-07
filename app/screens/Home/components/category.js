@@ -5,6 +5,7 @@ import {Application, ContentLoader, Icon, Text} from '@components';
 import {convertIcon} from '@utils';
 import {useTranslation} from 'react-i18next';
 import {Divider} from '@rneui/themed';
+import {ScrollView} from 'react-native';
 
 export default function Categories(props) {
   const {t} = useTranslation();
@@ -18,14 +19,20 @@ export default function Categories(props) {
   const renderContent = () => {
     if (data?.length > 0) {
       return (
-        <>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            marginLeft: 5,
+          }}>
           {data
             .filter((item, index) => index < 7)
             .map(item => (
               <Pressable
-                key={item._id}
                 onPress={() => onPress(item)}
-                style={styles.item}>
+                key={item._id}
+                style={[styles.item]}>
                 <View style={[styles.iconContainer, {backgroundColor: 'blue'}]}>
                   <Icon
                     {...convertIcon(item.icon)}
@@ -64,7 +71,7 @@ export default function Categories(props) {
               {t('more')}
             </Text>
           </Pressable>
-        </>
+        </View>
       );
     }
 

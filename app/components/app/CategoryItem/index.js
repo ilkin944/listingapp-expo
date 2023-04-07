@@ -68,7 +68,7 @@ const Index = props => {
         <>
           <Image
             style={[Styles.flex, styles.image]}
-            source={{uri: item.image?.full}}
+            source={{uri: item.image}}
             resizeMode="cover"
           />
           <View style={styles.iconFullContainer}>
